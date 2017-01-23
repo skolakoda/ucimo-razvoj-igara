@@ -1,0 +1,15 @@
+{
+    "strict": "global",
+    "esversion": 6,
+    "strict": true,
+    "undef": true,
+    "unused": true,
+    "newcap": true,
+    "browser": true,
+    "predef": [
+        "angular",
+    ],
+    "module": true,
+    "devel": true,
+    "asi": true
+}
