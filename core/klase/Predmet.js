@@ -1,10 +1,13 @@
+import canvas from '../io/canvas'
 import Krug from './Krug'
+import Vektor from './Vektor'
 
 export default class Predmet {
-  constructor(x, y) {
-    this.visina = 50
-    this.oblik = new Krug(this.visina, x, y)
-    this.polozaj = this.oblik.centar
+  constructor(visina = 100, x = Math.random() * canvas.width, y = Math.random() * 100) {
+    this.visina = visina
+    this.polozaj = new Vektor(x, y)
+    this.oblik = new Krug(this.visina / 2, this.polozaj)
+    this.fizika = true
     // this.masa;
     // this.sila;
     // this.brzina;
@@ -16,6 +19,6 @@ export default class Predmet {
   }
 
   render() {
-    this.oblik.render(this.polozaj.x, this.polozaj.y, this.visina)
+    this.oblik.render()
   }
 }

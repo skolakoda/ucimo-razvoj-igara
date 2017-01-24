@@ -4,10 +4,9 @@
 import Scena from 'klase/Scena'
 import Predmet from 'klase/Predmet'
 
-const krug1 = new Predmet(200, 50)
-const krug2 = new Predmet(400, 200)
-krug2.visina = 20
-const krug3 = new Predmet(600, 100)
+const krug1 = new Predmet(100)
+const krug2 = new Predmet(80)
+const krug3 = new Predmet(120)
 
 export default class Scena1 extends Scena {
   constructor() {

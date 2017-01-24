@@ -1,12 +1,16 @@
 import canvas from '../io/canvas'
-const ctx = canvas.ctx
+import Vektor from './Vektor'
 
-const visinaTla = canvas.height
-const gravitacija = 9.8
+const ctx = canvas.ctx
+const gravitacija = new Vektor(0, 9.8)
 const predmeti = []
 let loopID = null
 
 export default class Scena {
+  constructor() {
+    this.tlo = canvas.height
+    this.snagaVetra = new Vektor(1, -0.5)
+  }
 
   // PREDMETI
 
@@ -20,26 +24,36 @@ export default class Scena {
 
   // GAME LOGIC
 
-  // pretvoriti gravitaciju u vektor
-  // dodati jos neku silu (vetar)
+  // sabirati vektore
+  // kad je na zemlji, trenje
   // izracunati rezultantu
+  // napraviti projektil
+
+  update() {
+    predmeti.map(predmet => {
+      if (!predmet.fizika) return
+      this.sile(predmet)
+      this.proveriSudar(predmet)
+    })
+  }
 
   tezina(predmet) {
-    if (predmet.polozaj.y + gravitacija >= visinaTla - predmet.visina) {
-      predmet.polozaj.y = visinaTla - predmet.visina
-      return
-    }
-    predmet.polozaj.y += gravitacija
+    predmet.polozaj.y += gravitacija.y
+  }
+
+  vetar(predmet) {
+    predmet.polozaj.x += this.snagaVetra.x
   }
 
   sile(predmet) {
     this.tezina(predmet)
+    this.vetar(predmet)
   }
 
-  update() {
-    predmeti.map(predmet => {
-      this.sile(predmet)
-    })
+  proveriSudar(predmet) {
+    if (predmet.polozaj.y >= this.tlo - predmet.visina / 2) {
+      predmet.polozaj.y = this.tlo - predmet.visina / 2
+    }
   }
 
   // LOOP

@@ -1,12 +1,14 @@
-import Vektor from './Vektor'
 import canvas from '../io/canvas'
 const ctx = canvas.ctx
 
 export default class Krug {
-  constructor(r, x, y) {
+  /*
+  * param polozaj: Vektor object
+  */
+  constructor(r, polozaj) {
     this.oblik = 'krug'
     this.r = r
-    this.centar = new Vektor(x, y)
+    this.centar = polozaj
   }
 
   render(x = this.centar.x, y = this.centar.y, r = this.r) {
