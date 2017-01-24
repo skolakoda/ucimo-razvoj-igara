@@ -2,6 +2,9 @@
 
 Učimo game development.
 
-- napraviti Crtac koji crta predmet i scenu
+## TODO
+- eslint
+- integrisati fiziku
 - napraviti mapu iz koje crtamo nivo
-- napraviti fizičke predmete
+- srediti razlicite 2d perspektive
+- napraviti Crtac koji crta predmet i scenu?

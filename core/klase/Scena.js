@@ -1,50 +1,68 @@
 import canvas from '../io/canvas'
 const ctx = canvas.ctx
 
+const visinaTla = canvas.height
+const gravitacija = 9.8
 const predmeti = []
+let loopID = null
 
 export default class Scena {
 
   // PREDMETI
 
   add(...noviPredmeti) {
-    predmeti.push(...noviPredmeti);
+    predmeti.push(...noviPredmeti)
   }
 
   get predmeti() {
-    return predmeti;
+    return predmeti
   }
 
-  // ANIMACIJA
+  // GAME LOGIC
 
   update() {
-    // da iterira sve predmete i integrise fiziku
+    predmeti.map(predmet => {
+      this.sile(predmet)
+    })
   }
 
+  silaTeze(predmet) {
+    if (predmet.polozaj.y + gravitacija >= visinaTla - predmet.r) {
+      predmet.polozaj.y = visinaTla - predmet.r
+      return
+    }
+    predmet.polozaj.y += gravitacija
+  }
+
+  sile(predmet) {
+    this.silaTeze(predmet)
+  }
+
+  // LOOP
+
   loop() {
-    this.loopID = window.requestAnimationFrame(this.loop.bind(this))
+    loopID = window.requestAnimationFrame(this.loop.bind(this))
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    // popunjavaju naslednici
     this.update()
     this.render()
   }
 
   start() {
-    if (!this.loopID) {
+    if (!loopID) {
        this.loop()
     }
   }
 
   stop() {
-    if (this.loopID) {
-     window.cancelAnimationFrame(this.loopID);
-     this.loopID = null;
+    if (loopID) {
+     window.cancelAnimationFrame(loopID)
+     loopID = null
     }
   }
 
   // RENDER
 
   render() {
-    this.predmeti.map(predmet => predmet.render())
+    predmeti.map(predmet => predmet.render())
   }
 }

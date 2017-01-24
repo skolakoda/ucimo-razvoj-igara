@@ -6,7 +6,7 @@ export default class Krug {
   constructor(r, x, y) {
     this.oblik = 'krug'
     this.r = r
-    this.centar = new Vektor(x, y)
+    this.polozaj = this.centar = new Vektor(x, y)
   }
   render() {
     ctx.beginPath()

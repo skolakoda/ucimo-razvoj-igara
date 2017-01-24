@@ -1,9 +1,9 @@
 export default class Predmet {
   constructor() {
-    // this.oblik;
     this.masa;
     this.sila;
     this.brzina;
+    // this.oblik;
     // this.telo = {
     //   odskocivost,
     //   gustina,
