@@ -1,8 +1,6 @@
-// integrisati fiziku
-// dodati interakciju
-
 import Scena from 'klase/Scena'
 import Predmet from 'klase/Predmet'
+import Vektor from 'klase/Vektor'
 
 const krug1 = new Predmet(100)
 const krug2 = new Predmet(80)
