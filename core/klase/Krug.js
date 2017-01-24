@@ -8,7 +8,7 @@ export default class Krug {
     this.r = r
     this.centar = new Vektor(x, y)
   }
-  crtaj() {
+  render() {
     ctx.beginPath()
     ctx.arc(this.centar.x, this.centar.y, this.r, 0, 2 * Math.PI);
     ctx.fill();

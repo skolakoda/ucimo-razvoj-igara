@@ -11,7 +11,7 @@ export default class Predmet {
     // }
   }
 
-  crtaj(){
+  render(){
     // crta krug
   }
 }
