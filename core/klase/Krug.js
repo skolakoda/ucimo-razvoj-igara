@@ -9,6 +9,15 @@ export default class Krug {
     this.oblik = 'krug'
     this.r = r
     this.centar = polozaj
+    this.dubina = 10
+  }
+
+  get povrsina() {
+    return Math.PI * this.r * this.r
+  }
+
+  get zapremina() {
+    return this.povrsina * this.dubina
   }
 
   render(x = this.centar.x, y = this.centar.y, r = this.r) {

@@ -8,14 +8,19 @@ export default class Predmet {
     this.polozaj = new Vektor(x, y)
     this.oblik = new Krug(this.visina / 2, this.polozaj)
     this.fizika = true
-    // this.masa;
-    // this.sila;
-    // this.brzina;
+    this.gustina = 700
+    this.zapremina = this.oblik.zapremina
+    this.ubrzanje = new Vektor(0, 0)
+    this.brzina = new Vektor(0, 0)
     // this.telo = {
     //   odskocivost,
     //   gustina,
     //   trenje,
     // }
+  }
+
+  get masa() {
+    return this.gustina * this.zapremina
   }
 
   render() {

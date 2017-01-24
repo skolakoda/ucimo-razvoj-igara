@@ -1,53 +1,45 @@
 import canvas from '../io/canvas'
 import Vektor from './Vektor'
-
+import {saberi, skaliraj} from './Vektor'
 const ctx = canvas.ctx
+
 const gravitacija = new Vektor(0, 9.8)
-const predmeti = []
+let then = Date.now()
 let loopID = null
 
 export default class Scena {
   constructor() {
+    this.predmeti = []
     this.tlo = canvas.height
-    this.snagaVetra = new Vektor(1, -0.5)
+    this.vetar = new Vektor(1, 0.5)
   }
 
   // PREDMETI
 
   add(...noviPredmeti) {
-    predmeti.push(...noviPredmeti)
-  }
-
-  get predmeti() {
-    return predmeti
+    this.predmeti.push(...noviPredmeti)
   }
 
   // GAME LOGIC
 
-  // sabirati vektore
   // kad je na zemlji, trenje
-  // izracunati rezultantu
   // napraviti projektil
 
-  update() {
-    predmeti.map(predmet => {
+  update(dt) {
+    this.predmeti.map(predmet => {
       if (!predmet.fizika) return
-      this.sile(predmet)
+      this.integracija(predmet, dt)
       this.proveriSudar(predmet)
     })
   }
 
-  tezina(predmet) {
-    predmet.polozaj.y += gravitacija.y
-  }
-
-  vetar(predmet) {
-    predmet.polozaj.x += this.snagaVetra.x
-  }
-
-  sile(predmet) {
-    this.tezina(predmet)
-    this.vetar(predmet)
+  integracija(predmet, dt) {
+    const rezultanta = new Vektor(0, 0, 0)
+    rezultanta.dodaj(gravitacija)
+    rezultanta.dodaj(this.vetar)
+    predmet.ubrzanje = skaliraj(rezultanta, 1 / predmet.masa)
+    predmet.brzina.dodaj(skaliraj(predmet.ubrzanje, dt))
+    predmet.polozaj.dodaj(skaliraj(predmet.brzina, dt))
   }
 
   proveriSudar(predmet) {
@@ -60,8 +52,11 @@ export default class Scena {
 
   loop() {
     loopID = window.requestAnimationFrame(this.loop.bind(this))
+    const now = Date.now();
+    const delta = now - then;
+    then = now;
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    this.update()
+    this.update(delta * 50)
     this.render()
   }
 
@@ -81,6 +76,6 @@ export default class Scena {
   // RENDER
 
   render() {
-    predmeti.map(predmet => predmet.render())
+    this.predmeti.map(predmet => predmet.render())
   }
 }
