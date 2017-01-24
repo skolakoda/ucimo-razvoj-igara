@@ -1,9 +1,13 @@
+import Krug from './Krug'
+
 export default class Predmet {
-  constructor() {
-    this.masa;
-    this.sila;
-    this.brzina;
-    // this.oblik;
+  constructor(x, y) {
+    this.visina = 50
+    this.oblik = new Krug(this.visina, x, y)
+    this.polozaj = this.oblik.centar
+    // this.masa;
+    // this.sila;
+    // this.brzina;
     // this.telo = {
     //   odskocivost,
     //   gustina,
@@ -11,7 +15,7 @@ export default class Predmet {
     // }
   }
 
-  render(){
-    // crta krug
+  render() {
+    this.oblik.render(this.polozaj.x, this.polozaj.y, this.visina)
   }
 }

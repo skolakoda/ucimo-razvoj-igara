@@ -2,15 +2,16 @@
 // dodati interakciju
 
 import Scena from 'klase/Scena'
-import Krug from 'klase/Krug'
+import Predmet from 'klase/Predmet'
+
+const krug1 = new Predmet(200, 50)
+const krug2 = new Predmet(400, 200)
+krug2.visina = 20
+const krug3 = new Predmet(600, 100)
 
 export default class Scena1 extends Scena {
   constructor() {
     super()
-    this.add(
-      new Krug(50, 200, 50),
-      new Krug(30, 400, 200),
-      new Krug(40, 600, 100)
-    )
+    this.add(krug1, krug2, krug3)
   }
 }

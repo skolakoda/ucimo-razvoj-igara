@@ -20,22 +20,26 @@ export default class Scena {
 
   // GAME LOGIC
 
-  update() {
-    predmeti.map(predmet => {
-      this.sile(predmet)
-    })
-  }
+  // pretvoriti gravitaciju u vektor
+  // dodati jos neku silu (vetar)
+  // izracunati rezultantu
 
-  silaTeze(predmet) {
-    if (predmet.polozaj.y + gravitacija >= visinaTla - predmet.r) {
-      predmet.polozaj.y = visinaTla - predmet.r
+  tezina(predmet) {
+    if (predmet.polozaj.y + gravitacija >= visinaTla - predmet.visina) {
+      predmet.polozaj.y = visinaTla - predmet.visina
       return
     }
     predmet.polozaj.y += gravitacija
   }
 
   sile(predmet) {
-    this.silaTeze(predmet)
+    this.tezina(predmet)
+  }
+
+  update() {
+    predmeti.map(predmet => {
+      this.sile(predmet)
+    })
   }
 
   // LOOP
