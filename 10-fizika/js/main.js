@@ -1,15 +1,18 @@
-import Vektor from '../../core/Vektor'
-import Crtac from '../../core/Crtac'
+import Scena from 'klase/Scena'
+import Krug from 'klase/Krug'
+import Kvadrat from 'klase/Kvadrat'
 
-class Krug {
-  constructor(r, x, y) {
-    this.oblik = 'krug'
-    this.r = r
-    this.polozaj = new Vektor(x, y)
+const krug = new Krug(50, 400, 100)
+const kvadrat = new Kvadrat(20, 20, 150, 100)
+
+class Nivo1 extends Scena {
+  update() {
+    krug.centar.x++
+    krug.crtaj()
+    kvadrat.crtaj()
   }
 }
 
-const krug = new Krug(50, 400, 100)
-
-const crtac = new Crtac()
-crtac.crtaj(krug)
+// odvojiti u main
+const nivo1 = new Nivo1()
+nivo1.start()
