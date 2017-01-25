@@ -1,6 +1,5 @@
 import canvas from '../io/canvas'
-import Vektor from './Vektor'
-import {saberi, skaliraj} from './Vektor'
+import Vektor, {skaliraj} from './Vektor'
 const ctx = canvas.ctx
 
 const gravitacija = new Vektor(0, 9.8)
@@ -54,12 +53,12 @@ export default class Scena {
 
   loop() {
     loopID = window.requestAnimationFrame(this.loop.bind(this))
-    const now = Date.now();
-    const delta = now - then;
+    const now = Date.now()
+    const delta = now - then
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     this.update(delta * 10)
     this.render()
-    then = now;
+    then = now
   }
 
   start() {
