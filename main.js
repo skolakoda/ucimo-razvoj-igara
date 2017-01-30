@@ -1,5 +1,6 @@
 import FizikaScena from './10-fizika/FizikaScena'
-import './20-trigonometrija/main.js'
+import TrigScena from './20-trigonometrija/TrigScena'
 
 const fizikaScena = new FizikaScena()
-fizikaScena.start()
+const trigScena = new TrigScena()
+trigScena.start()

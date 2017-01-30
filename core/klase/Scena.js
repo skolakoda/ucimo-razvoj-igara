@@ -58,8 +58,8 @@ export default class Scena {
     this.loopID = window.requestAnimationFrame(this.loop.bind(this))
     const now = Date.now()
     const delta = now - then
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
     this.update(delta)
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
     this.render()
     then = now
   }
