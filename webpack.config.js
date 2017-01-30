@@ -1,9 +1,16 @@
+const path = require('path')
+
 module.exports = {
-  entry: './main.js',
+  entry: {
+    fizika: './10-fizika/main',
+    trigonometrija: './20-trigonometrija/main'
+  },
   output: {
-    filename: 'bundle.js'
+    path: path.join(__dirname, 'dist'),
+    filename: '[name].js',
+    // publicPath: '/dist/'
   },
   resolve: {
-    modules: ["core", "node_modules"]
+    modules: ['core', 'node_modules']
   }
 }
