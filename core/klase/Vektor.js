@@ -27,6 +27,10 @@ export default class Vektor {
     this.z = this.z * skalar
   }
 
+  primeniOtpor(procenat) {
+    this.skaliraj(1 - procenat)
+  }
+
   pomnoziSkalarno() {
 
   }
