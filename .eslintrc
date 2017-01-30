@@ -6,7 +6,7 @@
   "rules": {
       "semi": ["error", "never"],
       "quotes": ["error", "single"],
-      "no-undefined": "error",
+      "no-undef": "error",
       "no-unused-vars": "error",
       "no-use-before-define": "error",
       "no-dupe-args": "error",

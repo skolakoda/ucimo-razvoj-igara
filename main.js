@@ -1,6 +1,5 @@
-import Scena1 from './10-fizika/Scena1'
+import FizikaScena from './10-fizika/FizikaScena'
+import './20-trigonometrija/main.js'
 
-const scena1 = new Scena1()
-
-scena1.start()
-// scena1.stop()
+const fizikaScena = new FizikaScena()
+fizikaScena.start()

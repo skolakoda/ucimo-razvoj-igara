@@ -1,6 +1,5 @@
-import canvas from '../io/canvas'
+import {ctx, canvas} from '../io/canvas'
 import Vektor, {skaliraj} from './Vektor'
-const ctx = canvas.ctx
 
 const gravitacija = new Vektor(0, 98)
 let then = Date.now()

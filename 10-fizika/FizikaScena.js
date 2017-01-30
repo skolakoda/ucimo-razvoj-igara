@@ -1,3 +1,7 @@
+/*
+napraviti sudaranje lopti
+https://gamedevelopment.tutsplus.com/tutorials/when-worlds-collide-simulating-circle-circle-collisions--gamedev-769
+*/
 import Scena from 'klase/Scena'
 import Predmet from 'klase/Predmet'
 import Vektor from 'klase/Vektor'

@@ -1,5 +1,4 @@
-import canvas from '../io/canvas'
-const ctx = canvas.ctx
+import {ctx} from '../io/canvas'
 
 export default class Krug {
   /*
