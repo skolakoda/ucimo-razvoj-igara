@@ -2,6 +2,9 @@ import canvas from '../io/canvas'
 import Krug from './Krug'
 import Vektor from './Vektor'
 
+/*
+* Predmet podrazumevano ima oblik Kruga
+*/
 export default class Predmet {
   constructor(visina = 100, x = Math.random() * canvas.width, y = Math.random() * 100) {
     this.visina = visina
@@ -16,7 +19,7 @@ export default class Predmet {
     this.brzina = new Vektor(0, 0)
     this.trenjeS = 0.74
     this.trenjeK = 0.57
-    // odskocivost
+    this.odskocivost = 0.7
   }
 
   get masa() {

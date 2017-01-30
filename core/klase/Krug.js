@@ -22,7 +22,7 @@ export default class Krug {
 
   render(x = this.centar.x, y = this.centar.y, r = this.r) {
     ctx.beginPath()
-    ctx.arc(x, y, r, 0, 2 * Math.PI);
-    ctx.fill();
+    ctx.arc(x, y, r, 0, 2 * Math.PI)
+    ctx.fill()
   }
 }

@@ -2,22 +2,22 @@ import canvas from '../io/canvas'
 import Vektor, {skaliraj} from './Vektor'
 const ctx = canvas.ctx
 
-const gravitacija = new Vektor(0, 9.8)
+const gravitacija = new Vektor(0, 98)
 let then = Date.now()
-let loopID = null
 
 export default class Scena {
   constructor() {
     this.predmeti = []
     this.tlo = canvas.height
-    this.vetar = new Vektor(0.1, 0)
-    this.vuca = 0.99
+    this.vetar = new Vektor(1, 0)
+    this.vuca = 0.99  // vece je manje
+    this.loopID = null
   }
 
   // PREDMETI
 
-  add(...noviPredmeti) {
-    this.predmeti.push(...noviPredmeti)
+  add(...premeti) {
+    this.predmeti.push(...premeti)
   }
 
   // GAME LOGIC
@@ -33,7 +33,7 @@ export default class Scena {
   integracija(predmet, dt) {
     predmet.sila.dodaj(this.vetar)
     predmet.sila.dodaj(gravitacija)
-    predmet.sila.skaliraj(!this.naTlu(predmet) ? this.vuca : predmet.trenje)
+    predmet.sila.skaliraj(!this.sudaraTlo(predmet) ? this.vuca : predmet.trenje)
 
     predmet.ubrzanje = skaliraj(predmet.sila, 1 / predmet.masa)
     predmet.brzina.dodaj(skaliraj(predmet.ubrzanje, dt))
@@ -41,35 +41,40 @@ export default class Scena {
   }
 
   proveriTlo(predmet) {
-    if (!this.naTlu(predmet)) return
+    if (!this.sudaraTlo(predmet)) return
     predmet.polozaj.y = this.tlo - predmet.polaVisine
+    predmet.brzina.y *= -1
+    predmet.brzina.y *= predmet.odskocivost
+    if (predmet.brzina.y < 0.5) {
+      // set velocity and gravity to 0 ?
+    }
   }
 
-  naTlu(predmet) {
+  sudaraTlo(predmet) {
     return predmet.polozaj.y + predmet.polaVisine >= this.tlo
   }
 
   // LOOP
 
   loop() {
-    loopID = window.requestAnimationFrame(this.loop.bind(this))
+    this.loopID = window.requestAnimationFrame(this.loop.bind(this))
     const now = Date.now()
     const delta = now - then
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    this.update(delta * 10)
+    this.update(delta)
     this.render()
     then = now
   }
 
   start() {
-    if (loopID) return
+    if (this.loopID) return
     this.loop()
   }
 
   stop() {
-    if (!loopID) return
-    window.cancelAnimationFrame(loopID)
-    loopID = null
+    if (!this.loopID) return
+    window.cancelAnimationFrame(this.loopID)
+    this.loopID = null
   }
 
   // RENDER
