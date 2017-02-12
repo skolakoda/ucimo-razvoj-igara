@@ -1,5 +1,5 @@
 const canvas = document.getElementById('canvas')
-canvas.height = document.body.innerHeight || canvas.height
+canvas.height = window.innerHeight || canvas.height
 canvas.width = document.body.clientWidth || canvas.width
 const ctx = canvas.getContext('2d')
 const modifier = 100
