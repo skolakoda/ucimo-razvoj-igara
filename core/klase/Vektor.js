@@ -52,22 +52,6 @@ export function saberi(v1, v2) {
   }
 }
 
-export function podeli(v1, v2) {
-  return {
-    x: v1.x / v2.x,
-    y: v1.y / v2.y,
-    z: v1.z / v2.z
-  }
-}
-
-export function podeliSkalar(v, skalar) {
-  return {
-    x: v.x / skalar,
-    y: v.y / skalar,
-    z: v.z / skalar
-  }
-}
-
 export function skaliraj(vektor, skalar) {
   return {
     x: vektor.x * skalar,
