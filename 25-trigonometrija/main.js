@@ -1,6 +1,6 @@
-import Predmet from 'klase/Predmet'
-import Scena from 'klase/Scena'
-import {canvas} from 'io/canvas'
+import Predmet from '../core/klase/Predmet.js'
+import Scena from '../core/klase/Scena.js'
+import {canvas} from '../core/io/canvas.js'
 
 const radijusKretanja = 150
 const centar = {

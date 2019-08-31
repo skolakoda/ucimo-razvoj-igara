@@ -1,4 +1,4 @@
-import {ctx} from '../io/canvas'
+import {ctx} from '../io/canvas.js'
 
 export default class Krug {
   /*

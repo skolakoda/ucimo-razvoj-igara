@@ -1,6 +1,6 @@
-import canvas from '../io/canvas'
-import Krug from './Krug'
-import Vektor from './Vektor'
+import canvas from '../io/canvas.js'
+import Krug from './Krug.js'
+import Vektor from './Vektor.js'
 
 /*
 * Predmet podrazumevano ima oblik Kruga

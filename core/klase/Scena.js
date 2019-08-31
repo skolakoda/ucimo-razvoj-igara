@@ -1,5 +1,5 @@
-import {ctx, canvas} from '../io/canvas'
-import Vektor, {skaliraj, podeli} from './Vektor'
+import {ctx, canvas} from '../io/canvas.js'
+import Vektor, {skaliraj, podeli} from './Vektor.js'
 
 const gravitacija = new Vektor(0, 98)
 let then = Date.now()
@@ -24,7 +24,7 @@ export default class Scena {
     predmet.sila.dodaj(gravitacija)
     predmet.sila.primeniOtpor(this.diraTlo(predmet) ? predmet.trenje : this.vuca)
 
-    predmet.ubrzanje = podeli(predmet.sila, 1 / predmet.masa)
+    // predmet.ubrzanje = podeli(predmet.sila, 1 / predmet.masa)
     predmet.brzina.dodaj(skaliraj(predmet.ubrzanje, dt))
     predmet.polozaj.dodaj(skaliraj(predmet.brzina, dt))
   }
